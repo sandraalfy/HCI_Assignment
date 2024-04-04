@@ -1,0 +1,73 @@
+
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 20px;
+}
+
+#submitButton {
+    margin-top: 20px;
+}
+
+#myCheckbox {
+    margin-left: 30px;
+}
+
+#submitForm {
+    margin-top: 40px;
+}
+
+#taskInTable {
+    max-width: 300px;
+}
+
+#delete {
+    width: 60px;
+}
+
+#edit {
+    width: 60px;
+}
+
+#save {
+    width: 60px;
+    background-color: green;
+    color: white;
+    border-color: green;
+}
+
+.edit {
+    border: solid 2px orange;
+}
+
+.not-edit {
+    border: none;
+}
+
+.crossed {
+    text-decoration: line-through;
+}
+
+
+.form-group {
+    margin-bottom: 20px; 
+    text-align: center; 
+  }
+  
+.form-control {
+    width: 100%; 
+    max-width: 300px; 
+    margin: 0 auto;
+}
+
+.button-container {
+    text-align: center; 
+}
+
+#submitButton {
+    display: block; 
+    margin: 0 auto; 
+    margin-top: 10px; 
+}
+

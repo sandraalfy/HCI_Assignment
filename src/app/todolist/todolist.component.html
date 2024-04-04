@@ -1,0 +1,65 @@
+
+        <div class="container">
+            <h1>Task Management Application</h1>
+            <hr>
+            <form id="submitForm" (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+              
+              <div class="form-group">
+                <input type="text" class="form-control" id="task" placeholder="Enter task" ngModel name="task" required>
+                
+              </div>
+              
+              <div class="form-group">
+                <input type="text" class="form-control" id="description" placeholder="Enter description" ngModel name="description" required #descriptionInput>
+              </div>
+              <div class="form-group">
+                <input type="date" class="form-control" id="dueDate" placeholder="Select due date" ngModel name="dueDate" required #dueDateInput>
+              </div>
+          
+              <button [disabled]="taskForm.invalid" id="submitButton" type="submit" class="btn btn-primary">Add Task</button>
+            </form>
+            <hr>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Task</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Due Date</th>
+                  <th scope="col">Completed</th>
+                  <th scope="col">Delete</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Save</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let t of taskArray; index as i">
+                  <td>
+                    <input [ngClass]="{'edit': t.isEditable, 'not-edit': !t.isEditable, 'crossed': t.isCompleted}"
+                      #taskinput type="text" class="form-control" id="taskInTable" value="{{t.taskName}}"
+                      [readOnly]="!t.isEditable">
+                  </td>
+                  
+                  <td>
+                    <input [ngClass]="{'edit': t.isEditable, 'not-edit': !t.isEditable}" type="text" class="form-control" id="descriptionInTable"
+                      [value]="t.description" [readOnly]="!t.isEditable" [required]="t.isEditable">
+                  </td>
+                  <td>
+                    <input [ngClass]="{'edit': t.isEditable, 'not-edit': !t.isEditable}" type="date" class="form-control" id="dueDateInTable"
+                      [value]="t.dueDate" [readOnly]="!t.isEditable" [required]="t.isEditable">
+                  </td>
+        
+                  <td><input (change)="onCheck(i)" id="myCheckbox" type="checkbox" [checked]="t.isCompleted"></td>
+                  <td><button id="delete" class="btn btn-danger btn-sm" (click)="onDelete(i)">Delete</button></td>
+                  <td><button id="edit" class="btn btn-primary btn-sm" (click)="onEdit(i)" [disabled]="t.isEditable">Edit</button></td>
+                  <td><button id="save" class="btn btn-warning btn-sm" (click)="onSave(i, taskinput.value, descriptionInput.value, dueDateInput.value)"
+                      [disabled]="!t.isEditable">Save</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <footer class="footer">
+            <div class="container">
+              <p>&copy; 20201700342 HCI Angular Assigment.</p>
+            </div>
+          </footer>
